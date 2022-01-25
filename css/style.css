@@ -1,0 +1,41 @@
+header h2 {
+    float:inline-end;
+  /*  padding-inline-start: 30px;*/
+    padding-inline-end: 30px;
+    color: azure;
+    position: inherit;
+}
+
+body{
+    background-color: black;
+    
+    padding: 10px;
+ /*   width:max-content; not good*/
+  
+
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main{
+    flex: 1;
+    min-width: 330px;
+    max-width: 100%;
+    /*height: 45vmax;*/
+    max-height: 50%;
+   justify-content: center;
+    display:grid;
+    background-color:darkgray;
+    padding-top: 20px;
+    grid-template-rows: repeat(18, 1fr);
+    grid-template-columns: repeat(18, 1fr);
+    align-items: center;
+    
+    display: flex;
+    
+}
+
+footer{
+    padding-top: 10px;
+}
