@@ -1,30 +1,76 @@
+let initPos = {x: 0, y: 0}; 
 let snakeLength = [{x: 1, y: 1}];
-frog =generatePosition();
+let lastUpdate = 0;
+frog = generatePosition();
+let speed = 5;
 
-document.getElementById('grid-container').innerHTML = "";
-frogItem = document.createElement('div');
-
-frogItem.style.gridColumnStart = frog.x;
-frogItem.style.gridRowStart = frog.y;
-console.log('frog coordinates: ' + frog.x + ' ' + frog.y);
-
-frogItem.classList.add('frog')
-document.getElementById('grid-container').appendChild(frogItem);
-
-function generatePosition(){
-    return {x: Math.floor(Math.random() * 24) + 1, y: Math.floor(Math.random() * 24) + 1};
+function start(time) {
+    window.requestAnimationFrame(start);
+    if((time - lastUpdate)/1000 < 1/speed){
+        return;
+    }
+    lastUpdate = time;
+    playGame();
 }
 
+window.requestAnimationFrame(start);
+window.addEventListener('keydown', event =>{
+  
+    if(event.key == "ArrowLeft") {
+        initPos.x = -1;
+        initPos.y = 0;   
+    } else if (event.key == "ArrowRight"){
+        initPos.x = 1;
+        initPos.y = 0;
+    } else if (event.key == "ArrowUp"){
+        initPos.x = 0;
+        initPos.y = -1;
+    } else if (event.key == "ArrowDown"){
+        initPos.x = 0;
+        initPos.y = 1;
+    }
+ 
+});
 
-snakeItem = document.createElement('div');
-snakeItem.style.gridColumnStart = snakeLength[0].x;
-snakeItem.style.gridRowStart = snakeLength[0].y;
+function playGame(){
+
+    for (let i = snakeLength.length - 2; i>=0; i--) { 
+        snakeLength[i+1] = {...snakeLength[i]};
+    }
+
+    snakeLength[0].x += initPos.x;
+    snakeLength[0].y += initPos.y;
+
+    document.getElementById('grid-container').innerHTML = "";
+    snakeLength.forEach((element, index)=>{
+        snakeItem = document.createElement('div');
+
+        snakeItem.style.gridColumnStart = element.x;
+        snakeItem.style.gridRowStart = element.y;
+        
+        console.log('snake coordinates: ' + element.x + ' ' + element.y);
+
+        if(index === 0){
+            snakeItem.classList.add('snakehead');
+        }
+        else{
+            snakeItem.classList.add('snakebody');
+        }
+        document.getElementById('grid-container').appendChild(snakeItem);
+        console.log('snake: ' + snakeItem.innerHTML);
+    });
+
+    frogItem = document.createElement('div');
+
+    frogItem.style.gridColumnStart = frog.x;
+    frogItem.style.gridRowStart = frog.y;
+    console.log('frog coordinates: ' + frog.x + ' ' + frog.y);
     
-console.log('snake coordinates: ' + snakeLength[0].x + ' ' + snakeLength[0].y);
-
-snakeItem.classList.add('snakehead');
-snakeItem.classList.add('snakebody');
-
-document.getElementById('grid-container').appendChild(snakeItem);
-   
+    frogItem.classList.add('frog')
+    document.getElementById('grid-container').appendChild(frogItem);
+    
+}
+function generatePosition(){
+    return {x: Math.floor(Math.random() * 24) + 1, y: Math.floor(Math.random() * 24) + 1};
+} 
 
