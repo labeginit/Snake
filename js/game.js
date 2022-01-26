@@ -42,6 +42,27 @@ function playGame(){
     snakeLength[0].y += initPos.y;
 
     document.getElementById('grid-container').innerHTML = "";
+    addSnake();
+
+    addFrog();
+   
+    
+}
+function generatePosition(){
+    return {x: Math.floor(Math.random() * 24) + 1, y: Math.floor(Math.random() * 24) + 1};
+} 
+function addFrog(){
+    frogItem = document.createElement('div');
+
+    frogItem.style.gridColumnStart = frog.x;
+    frogItem.style.gridRowStart = frog.y;
+    console.log('frog coordinates: ' + frog.x + ' ' + frog.y);
+    
+    frogItem.classList.add('frog')
+    document.getElementById('grid-container').appendChild(frogItem);
+}
+
+function addSnake(){
     snakeLength.forEach((element, index)=>{
         snakeItem = document.createElement('div');
 
@@ -59,18 +80,5 @@ function playGame(){
         document.getElementById('grid-container').appendChild(snakeItem);
         console.log('snake: ' + snakeItem.innerHTML);
     });
-
-    frogItem = document.createElement('div');
-
-    frogItem.style.gridColumnStart = frog.x;
-    frogItem.style.gridRowStart = frog.y;
-    console.log('frog coordinates: ' + frog.x + ' ' + frog.y);
-    
-    frogItem.classList.add('frog')
-    document.getElementById('grid-container').appendChild(frogItem);
-    
 }
-function generatePosition(){
-    return {x: Math.floor(Math.random() * 24) + 1, y: Math.floor(Math.random() * 24) + 1};
-} 
 
