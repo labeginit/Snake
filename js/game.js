@@ -8,6 +8,7 @@ const up = "ArrowUp";
 const down = "ArrowDown";
 const left = "ArrowLeft";
 const right = "ArrowRight";
+scr = 0;
 
 
 function start(time) {
@@ -43,6 +44,8 @@ function playGame() {
         //place the snake to the beginning and make a new frog, then how alert
         direction = directions[Math.round(Math.random())];
         frog = generatePosition();
+        scr = 0;
+        document.getElementsByClassName('score')[0].innerHTML = scr;
         alert("Game Over!");
     }
 
@@ -51,6 +54,10 @@ function playGame() {
         snakePosition.unshift({ x: snakePosition[0].x + direction.x, y: snakePosition[0].y + direction.y });
         // generate a new frog     
         frog = generatePosition();
+        scr++;
+        //score = document.getElementsByClassName('score')[0].value;
+
+        document.getElementsByClassName('score')[0].innerHTML = scr;
     }
 
     for (let i = snakePosition.length - 2; i >= 0; i--) {
@@ -74,7 +81,6 @@ function addFrog() {
 
     frogItem.style.gridColumnStart = frog.x;
     frogItem.style.gridRowStart = frog.y;
-    console.log('frog coordinates: ' + frog.x + ' ' + frog.y);
 
     frogItem.classList.add('frog')
     document.getElementById('grid-container').appendChild(frogItem);
@@ -87,8 +93,6 @@ function addMovingSnake() {
         snakeItem.style.gridColumnStart = element.x;
         snakeItem.style.gridRowStart = element.y;
 
-        console.log('snake coordinates: ' + element.x + ' ' + element.y);
-
         if (index == 0) {
             snakeItem.classList.add('snakehead');
         }
@@ -96,7 +100,6 @@ function addMovingSnake() {
             snakeItem.classList.add('snakebody');
         }
         document.getElementById('grid-container').appendChild(snakeItem);
-        console.log('snake: ' + snakeItem.innerHTML);
     });
 }
 
