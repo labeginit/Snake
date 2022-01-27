@@ -34,6 +34,13 @@ window.addEventListener('keydown', event =>{
 
 function playGame(){
 
+    if(snakeLength[0].y === frog.y && snakeLength[0].x ===frog.x){
+        // snake can eat and grow but does not die
+        snakeLength.unshift({x: snakeLength[0].x + initPos.x, y: snakeLength[0].y + initPos.y});
+       // generate a new frog     
+       frog = generatePosition();
+    }
+ 
     for (let i = snakeLength.length - 2; i>=0; i--) { 
         snakeLength[i+1] = {...snakeLength[i]};
     }
@@ -41,12 +48,11 @@ function playGame(){
     snakeLength[0].x += initPos.x;
     snakeLength[0].y += initPos.y;
 
+    //without this the whole game field will eventually be colored into the snake colour
     document.getElementById('grid-container').innerHTML = "";
-    addSnake();
-
-    addFrog();
-   
     
+    addMovingSnake();
+    addFrog();
 }
 function generatePosition(){
     return {x: Math.floor(Math.random() * 24) + 1, y: Math.floor(Math.random() * 24) + 1};
@@ -62,7 +68,7 @@ function addFrog(){
     document.getElementById('grid-container').appendChild(frogItem);
 }
 
-function addSnake(){
+function addMovingSnake(){
     snakeLength.forEach((element, index)=>{
         snakeItem = document.createElement('div');
 
@@ -71,7 +77,7 @@ function addSnake(){
         
         console.log('snake coordinates: ' + element.x + ' ' + element.y);
 
-        if(index === 0){
+        if(index == 0){
             snakeItem.classList.add('snakehead');
         }
         else{
