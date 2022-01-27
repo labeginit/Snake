@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Martel:wght@400;800&family=Titillium+Web:wght@700&display=swap');
 
-header h2 {
-    color: black;
-    font-family: 'Martel', serif;
-}
-
 body{
     background-color: lightcyan;
     display: flex;
@@ -62,25 +57,28 @@ button {
 }
 
 .float-container {
-    width: 103vmin;
+    width: 110vmin;
     height: 80vmin;   
 }
 
 .float-child1 {
-    width: auto;
+    width: 74%;
     float: left;
     padding-right: 1%;
 }
 
 .float-child2 {
-    width: auto;
+    width: 24%;
     height: 50%;
     float: right;
+    color: black;
+    font-family: 'Martel', serif;
+    font-size: 12px;
 }
 
 .float-child3 {
-     width: auto;
-    height: 50%;
+    width: 20%;
+    
     float: right;
 } 
 
