@@ -25,19 +25,14 @@ window.requestAnimationFrame(start);
 window.addEventListener('keydown', event => {
 
     if (event.key == left) {
-        direction.x = -1;
-        direction.y = 0;
+        goLeft();
     } else if (event.key == right) {
-        direction.x = 1;
-        direction.y = 0;
+        goRight();
     } else if (event.key == up) {
-        direction.x = 0;
-        direction.y = -1;
+        goUp();
     } else if (event.key == down) {
-        direction.x = 0;
-        direction.y = 1;
+        goDown();
     }
-
 });
 
 function playGame() {
@@ -132,3 +127,22 @@ async function restartGame() {
     document.getElementsByClassName('score')[0].innerHTML = scr;
 }
 
+function goLeft() {
+    direction.x = -1;
+    direction.y = 0;
+}
+
+function goRight() {
+    direction.x = 1;
+    direction.y = 0;
+}
+
+function goUp() {
+    direction.x = 0;
+    direction.y = -1;
+}
+
+function goDown() {
+    direction.x = 0;
+    direction.y = 1;
+}
