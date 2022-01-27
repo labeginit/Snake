@@ -25,8 +25,8 @@ main{
     flex: 1;
     background-color:black;
     display: grid;
-    width: 85vmin;
-    height: 85vmin;    
+    width: 80vmin;
+    height: 80vmin;    
     grid-template-rows: repeat(24, 1fr);
     grid-template-columns: repeat(24, 1fr);
 }
@@ -56,14 +56,27 @@ button {
 }
 
 #buttons{
-    
-    position:inherit;
     display: grid;
-    width: 30vmin;
-    height: 30vmin;    
+    width: 20vmin;
+    height: 20vmin;    
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
 }
+
+.float-container {
+    width: 102vmin;
+    height: 80vmin;   
+}
+
+.float-child1 {
+    width: 78%;
+    float: left;
+}  
+
+.float-child2 {
+    width: 20%;
+    float: right;
+} 
 
 
 
