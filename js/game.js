@@ -17,6 +17,7 @@ function start(time) {
         return;
     }
     lastUpdate = time;
+    document.getElementsByClassName('hiscore')[0].innerHTML = localStorage.getItem('hiscore');
     playGame();
 }
 
@@ -41,12 +42,8 @@ window.addEventListener('keydown', event => {
 
 function playGame() {
     if (dead(snakePosition)) {
-        //place the snake to the beginning and make a new frog, then how alert
-        direction = directions[Math.round(Math.random())];
-        frog = generatePosition();
-        scr = 0;
-        document.getElementsByClassName('score')[0].innerHTML = scr;
-        alert("Game Over!");
+        //place the snake to the beginning and make a new frog, restart the counter, then how alert
+        restartGame().then(alert("Game Over!"));
     }
 
     if (snakePosition[0].y === frog.y && snakePosition[0].x === frog.x) {
@@ -105,7 +102,7 @@ function addMovingSnake() {
 
 function dead(snake) {
     // hit the wall
-    if (snake[0].x >= 24 || snake[0].x <= 0 || snake[0].y >= 24 || snake[0].y <= 0) {
+    if (snake[0].x >= 24 || snake[0].x < 1 || snake[0].y >= 24 || snake[0].y < 1) {
         snakePosition = [{ x: 1, y: 1 }];
         return true;
     }
@@ -119,5 +116,19 @@ function dead(snake) {
     }
 
     return false;
+}
+
+async function restartGame() {
+    direction = directions[Math.round(Math.random())];
+    // a workaround for the problem of direction not being reassigned and the looping alert behavior as a rasult of it
+    if (direction.x === -1 || direction.y === -1) {
+        direction.x = 0;
+        direction.y = 1;
+    }
+
+    frog = generatePosition();
+    (scr > localStorage.getItem('hiscore')) ? localStorage.setItem('hiscore', scr) : '';
+    scr = 0;
+    document.getElementsByClassName('score')[0].innerHTML = scr;
 }
 
