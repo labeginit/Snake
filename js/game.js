@@ -17,7 +17,10 @@ function start(time) {
         return;
     }
     lastUpdate = time;
-    document.getElementsByClassName('hiscore')[0].innerHTML = localStorage.getItem('hiscore');
+
+    document.getElementsByClassName('hiscore')[0].innerHTML = 'HiScore: ' + localStorage.getItem('hiscore');
+    document.getElementsByClassName('score')[0].innerHTML = 'Score: ' + scr;
+
     playGame();
 }
 
@@ -47,9 +50,8 @@ function playGame() {
         // generate a new frog     
         frog = generatePosition();
         scr++;
-        //score = document.getElementsByClassName('score')[0].value;
 
-        document.getElementsByClassName('score')[0].innerHTML = scr;
+        document.getElementsByClassName('score')[0].innerHTML = 'Score: ' + scr;
     }
 
     for (let i = snakePosition.length - 2; i >= 0; i--) {
@@ -122,9 +124,14 @@ async function restartGame() {
     }
 
     frog = generatePosition();
-    (scr > localStorage.getItem('hiscore')) ? localStorage.setItem('hiscore', scr) : '';
+    //(scr > localStorage.getItem('hiscore')) ? (localStorage.setItem('hiscore', scr)  document.getElementsByClassName('hiscore')[0].innerHTML = 'HiScore: ' + scr)) : '';
+    if (scr > localStorage.getItem('hiscore')) {
+        localStorage.setItem('hiscore', scr);
+        document.getElementsByClassName('hiscore')[0].innerHTML = 'HiScore: ' + scr;
+    }
+
     scr = 0;
-    document.getElementsByClassName('score')[0].innerHTML = scr;
+    document.getElementsByClassName('score')[0].innerHTML = 'Score: ' + scr;
 }
 
 function goLeft() {
