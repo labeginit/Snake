@@ -8,6 +8,12 @@ body{
     padding: 10px;
 }
 
+header h1{
+    align-content: center;
+    font-family: 'Martel', serif;
+    font-size: 18px;
+}
+
 main{
     flex: 1;
     align-self: center;
@@ -75,6 +81,14 @@ button {
         width: 20%;
         float: left;
     } 
+
+    .float-child4 {
+        width: 100%;
+        font-family: 'Martel', serif;
+        float: right;
+        font-size: 11px;
+        height: 50px;
+    }
     
     button {
         padding: 14px;
@@ -85,16 +99,16 @@ button {
 @media screen and (max-width: 599px) {
     .float-container {
         width: 80vmin;
-        height: 170vmin;   
+        height: 165vmin;   
     }
 
     .float-child1 {
         float: inherit;
        
     }
-    .float-child2 {
+    .float-child2, .float-child4 {
         float: inherit;
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .float-child3 {
@@ -112,6 +126,11 @@ button {
 
 .float-child2 {
     color: black;
+    font-family: 'Martel', serif;
+}
+
+.float-child4 {
+    color:red;
     font-family: 'Martel', serif;
 }
 
