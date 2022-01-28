@@ -45,7 +45,7 @@ function playGame() {
     }
 
     if (snakePosition[0].y === frog.y && snakePosition[0].x === frog.x) {
-        // snake can eat and grow but does not die
+        // snake can eat and grow 
         snakePosition.unshift({ x: snakePosition[0].x + direction.x, y: snakePosition[0].y + direction.y });
         // generate a new frog     
         frog = generatePosition();
