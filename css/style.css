@@ -41,28 +41,22 @@ main{
 }
 
 button {
-    /*padding: 13px;*/
-    border: 4px solid black;
     border-radius: 4px;
     cursor: pointer;
     color: white;
-    font-family: 'Martel', serif;
-    font-size: 13px;
     background-color: black;
 }
 
 #buttons{
     display: grid;
-    width: 30vmin;
-    height: 30vmin;    
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
 }
 
 @media screen and (min-width: 600px) {
     .float-container {
-        width: 110vmin;
-        height: 80vmin;   
+        width: 120vmin;
+        height: 85vmin;   
     }
 
     .float-child1 {
@@ -72,18 +66,18 @@ button {
     }
     .float-child2 {
         width: 24%;
-        height: 50%;
+        height: 40%;
         float: right;
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .float-child3 {
         width: 20%;
-        float: right;
+        float: left;
     } 
     
     button {
-        padding: 13px;
+        padding: 14px;
     }
    
 }
@@ -91,27 +85,26 @@ button {
 @media screen and (max-width: 599px) {
     .float-container {
         width: 80vmin;
-        height: 120vmin;   
+        height: 170vmin;   
     }
 
     .float-child1 {
-        width: 100%;
-        float: left;
-        padding-bottom: 5%;
+        float: inherit;
+       
     }
     .float-child2 {
-        width: 24%;
-        float: left;
-        font-size: 9px;
+        float: inherit;
+        font-size: 12px;
     }
 
     .float-child3 {
-        width: 76%;
-        float: left;
-        padding-top: 30%;
+        float: inherit;
+        padding-top: 10px;
     } 
        button {
-        padding: 20px;
+        padding: 18px;
+        font-size: 15px;
+        font-family: 'Martel', serif;
     }
    
 }
