@@ -10,6 +10,8 @@ const left = "ArrowLeft";
 const right = "ArrowRight";
 scr = 0;
 let isUpdated = false;
+let previousCommand = '';
+let currentCommand = '';
 
 
 function start(time) {
@@ -49,7 +51,7 @@ function playGame() {
         //place the snake to the beginning and make a new frog, restart the counter, then how alert
         restartGame().then(alert("Game Over!"));
     }
-    console.log('Speed: ' + speed + ' score: ' + scr)
+
     if (snakePosition[0].y === frog.y && snakePosition[0].x === frog.x) {
         // snake can eat and grow 
         snakePosition.unshift({ x: snakePosition[0].x + direction.x, y: snakePosition[0].y + direction.y });
@@ -67,6 +69,7 @@ function playGame() {
 
     snakePosition[0].x += direction.x;
     snakePosition[0].y += direction.y;
+    previousCommand = currentCommand;
 
     //without this the whole game field will eventually be colored into the snake colour
     document.getElementById('grid-container').innerHTML = "";
@@ -111,7 +114,17 @@ function dead(snake) {
         return true;
     }
 
-    // has eaten itself
+    // has eaten itself on the same plane
+    if (Object.keys(snake).length > 1) {
+        if (((currentCommand === 'r') && (previousCommand === 'l')) || ((currentCommand === 'l') && (previousCommand === 'r')) || ((currentCommand === 'u') && (previousCommand === 'd')) || ((currentCommand === 'd') && (previousCommand === 'u'))) {
+            snakePosition = [{ x: 1, y: 1 }];
+            currentCommand = '';
+            previousCommand = '';
+            return true;
+        }
+    }
+
+    // has eaten its body
     for (let i = 1; i < snakePosition.length; i++) {
         if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) {
             snakePosition = [{ x: 1, y: 1 }];
@@ -144,19 +157,23 @@ async function restartGame() {
 function goLeft() {
     direction.x = -1;
     direction.y = 0;
+    currentCommand = 'l';
 }
 
 function goRight() {
     direction.x = 1;
     direction.y = 0;
+    currentCommand = 'r';
 }
 
 function goUp() {
     direction.x = 0;
     direction.y = -1;
+    currentCommand = 'u';
 }
 
 function goDown() {
     direction.x = 0;
     direction.y = 1;
+    currentCommand = 'd';
 }
