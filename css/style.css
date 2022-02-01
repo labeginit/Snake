@@ -29,6 +29,10 @@ main{
     grid-template-columns: repeat(24, 1fr);
 }
 
+.box{
+    background-color: white;
+}
+
 
 .snakehead, .snakebody{
     background-color: white;
@@ -133,7 +137,5 @@ button {
     color:red;
     font-family: 'Martel', serif;
 }
-
-
 
 

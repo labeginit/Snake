@@ -22,6 +22,7 @@ function start(time) {
     lastUpdate = time;
 
     document.getElementsByClassName('hiscore')[0].innerHTML = 'HiScore: ' + localStorage.getItem('hiscore');
+    document.getElementsByClassName('speed')[0].innerHTML = 'Speed: ' + speed;
     document.getElementsByClassName('score')[0].innerHTML = 'Score: ' + scr;
 
     playGame();
@@ -45,6 +46,7 @@ function playGame() {
     // speed will increase every 10 scores and stay on same level if a snake dies
     if ((scr > 0) && (scr % 10 == 0) && !isUpdated) {
         speed++;
+        document.getElementsByClassName('speed')[0].innerHTML = 'Speed: ' + speed;
         isUpdated = true;
     }
     if (dead(snakePosition)) {
@@ -144,7 +146,6 @@ async function restartGame() {
     }
 
     frog = generatePosition();
-    //(scr > localStorage.getItem('hiscore')) ? (localStorage.setItem('hiscore', scr)  document.getElementsByClassName('hiscore')[0].innerHTML = 'HiScore: ' + scr)) : '';
     if (scr > localStorage.getItem('hiscore')) {
         localStorage.setItem('hiscore', scr);
         document.getElementsByClassName('hiscore')[0].innerHTML = 'HiScore: ' + scr;
