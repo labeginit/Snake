@@ -59,7 +59,17 @@ button {
     grid-template-columns: repeat(3, 1fr);
 }
 
-@media screen and (min-width: 600px) {
+.float-child2 {
+    color: black;
+    font-family: 'Martel', serif;
+}
+
+.float-child4 {
+    color:red;
+    font-family: 'Martel', serif;
+}
+
+@media screen and (min-width: 600px) {   /*for phone screens - landscape view*/
     .float-container {
         width: 140vmin;
         height: 93vmin;   
@@ -96,7 +106,7 @@ button {
    
 }
 
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 599px) { /*for phone screens - portrait view*/
     .float-container {
         width: 80vmin;
         height: 170vmin;   
@@ -123,13 +133,41 @@ button {
    
 }
 
+@media only screen and (min-device-width: 800px) and (max-device-width: 900px) and (orientation: portrait) {   /*for ipad screens - portrait view*/
+    
+    .float-container {
+        width: 90vmin;
+        height: 130vmin;   
+    }
 
-.float-child2 {
-    color: black;
-    font-family: 'Martel', serif;
-}
+    .float-child1 {
+        float: inherit;
+        width: 100%;
+       
+    }
+    .float-child2, .float-child4 {
+        float: left;
+        font-size: 11px;
+    }
 
-.float-child4 {
-    color:red;
-    font-family: 'Martel', serif;
+    .float-child2 {
+        height: 10%;
+    }
+
+    .float-child3 {
+        float: inherit;
+        width: 100%;
+        padding-top: 5px;
+    }
+    
+    .float-child4 {
+        height: 5%;
+    }
+       button {
+        padding: 16px;
+        font-size: 15px;
+        font-family: 'Martel', serif;
+    }
+   
+   
 }
