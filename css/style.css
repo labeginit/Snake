@@ -5,7 +5,6 @@ body{
     display: flex;
     min-height: 98vh;
     flex-direction: column;
-    /*padding: 10px;*/
 }
 
 header h1{
@@ -141,23 +140,23 @@ button {
     }
 
     .float-child1 {
-        float: inherit;
+        float: left;
         width: 100%;
        
     }
     .float-child2, .float-child4 {
         float: left;
-        font-size: 11px;
+        font-size: 13px;
     }
 
     .float-child2 {
-        height: 10%;
+        height: 12%;
     }
 
     .float-child3 {
-        float: inherit;
-        width: 100%;
-        padding-top: 5px;
+        float: left;
+        width: 88%;
+        padding-top: 15px;
     }
     
     .float-child4 {
@@ -168,6 +167,47 @@ button {
         font-size: 15px;
         font-family: 'Martel', serif;
     }
-   
-   
+}
+
+@media only screen and (min-device-width: 1080px) and (max-device-width: 1100px) and (orientation: landscape) {   /*for ipad screens - portrait view*/
+    
+    body{
+    background-color: lightcyan;
+    display: flex;
+    min-height: 95vh;
+}
+    .float-container {
+        width: 120vmin;
+        height: 95vmin;   
+    }
+
+    .float-child1 {
+        float: left;
+        width: 70%;
+       
+    }
+    .float-child2, .float-child4 {
+        float: right;
+        font-size: 13px;
+    }
+
+    .float-child2 {
+        width: 25%;
+        height: 40%;
+    }
+
+    .float-child3 {
+        float: right;
+        width: 25%;
+        padding-top: 5px;
+    }
+    
+    .float-child4 {
+        height: 10%;
+    }
+       button {
+        padding: 16px;
+        font-size: 15px;
+        font-family: 'Martel', serif;
+    }
 }
