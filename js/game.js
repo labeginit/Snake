@@ -2,13 +2,14 @@ let direction = { x: 0, y: 0 };
 let snakePosition = [{ x: 1, y: 1 }];
 let lastUpdate = 0;
 frog = generatePosition();
-let speed = 5;
+let speed = 3;
 const directions = [{ x: 0, y: 1 }, { x: 1, y: 0 }]  // two possible start directions
 const up = "ArrowUp";
 const down = "ArrowDown";
 const left = "ArrowLeft";
 const right = "ArrowRight";
 scr = 0;
+let isUpdated = false;
 
 
 function start(time) {
@@ -39,17 +40,23 @@ window.addEventListener('keydown', event => {
 });
 
 function playGame() {
+    // speed will increase every 10 scores and stay on same level if a snake dies
+    if ((scr > 0) && (scr % 10 == 0) && !isUpdated) {
+        speed++;
+        isUpdated = true;
+    }
     if (dead(snakePosition)) {
         //place the snake to the beginning and make a new frog, restart the counter, then how alert
         restartGame().then(alert("Game Over!"));
     }
-
+    console.log('Speed: ' + speed + ' score: ' + scr)
     if (snakePosition[0].y === frog.y && snakePosition[0].x === frog.x) {
         // snake can eat and grow 
         snakePosition.unshift({ x: snakePosition[0].x + direction.x, y: snakePosition[0].y + direction.y });
         // generate a new frog     
         frog = generatePosition();
         scr++;
+        isUpdated = false;
 
         document.getElementsByClassName('score')[0].innerHTML = 'Score: ' + scr;
     }
