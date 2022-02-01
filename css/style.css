@@ -3,9 +3,9 @@
 body{
     background-color: lightcyan;
     display: flex;
-    min-height: 100vh;
+    min-height: 98vh;
     flex-direction: column;
-    padding: 10px;
+    /*padding: 10px;*/
 }
 
 header h1{
@@ -27,10 +27,6 @@ main{
     height: 80vmin;    
     grid-template-rows: repeat(24, 1fr);
     grid-template-columns: repeat(24, 1fr);
-}
-
-.box{
-    background-color: white;
 }
 
 
@@ -65,25 +61,25 @@ button {
 
 @media screen and (min-width: 600px) {
     .float-container {
-        width: 120vmin;
-        height: 85vmin;   
+        width: 140vmin;
+        height: 93vmin;   
     }
 
     .float-child1 {
-        width: 74%;
+        width: 60%;
         float: left;
         padding-right: 1%;
     }
     .float-child2 {
-        width: 24%;
+        width: 37%;
         height: 40%;
         float: right;
         font-size: 11px;
     }
 
     .float-child3 {
-        width: 20%;
-        float: left;
+        width: 37%;
+        float: right;
     } 
 
     .float-child4 {
@@ -103,7 +99,7 @@ button {
 @media screen and (max-width: 599px) {
     .float-container {
         width: 80vmin;
-        height: 165vmin;   
+        height: 170vmin;   
     }
 
     .float-child1 {
@@ -117,10 +113,10 @@ button {
 
     .float-child3 {
         float: inherit;
-        padding-top: 10px;
+        padding-top: 5px;
     } 
        button {
-        padding: 18px;
+        padding: 16px;
         font-size: 15px;
         font-family: 'Martel', serif;
     }
@@ -137,5 +133,3 @@ button {
     color:red;
     font-family: 'Martel', serif;
 }
-
-
