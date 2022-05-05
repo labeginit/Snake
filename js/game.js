@@ -20,8 +20,9 @@ function start(time) {
         return;
     }
     lastUpdate = time;
+    let hi = localStorage.getItem('hiscore') || 0;
 
-    document.getElementsByClassName('hiscore')[0].innerHTML = 'HiScore: ' + localStorage.getItem('hiscore');
+    document.getElementsByClassName('hiscore')[0].innerHTML = 'HiScore: ' + hi;
     document.getElementsByClassName('speed')[0].innerHTML = 'Speed: ' + speed;
     document.getElementsByClassName('score')[0].innerHTML = 'Score: ' + scr;
 
